@@ -3,15 +3,16 @@
 {% block content %}
     <h2>Evento</h2>
     <form action="submit" method="POST">{% csrf_token %}
+        <input type="number" name="id_evento" value="{{ evento.id }}" hidden>
         <label>Título: </label>
-        <input type="text" name="titulo" size="30">
+        <input type="text" name="titulo" size="30", value="{{ evento.titulo }}">
         <br><br>
         <label>Data do Evento: </label>
-        <input type="datetime-local" name="data_evento">
+        <input type="datetime-local" name="data_evento" value="{{ evento.get_data_input_evento }}">
         <br><br>
         <label>Descrição: </label>
         <br>
-        <textarea name="descricao" cols="37" rows="5"></textarea>
+        <textarea name="descricao" cols="37" rows="5">{{ evento.descricao }}</textarea>
         <br><br>
         <button type="submit">Salvar</button>
         <a href="/">
